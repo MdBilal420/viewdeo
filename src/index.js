@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { VideoProvider } from '../src/context/video-context'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <VideoProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </VideoProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

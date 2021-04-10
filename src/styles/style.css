@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app{
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-container{
+    height: calc(100vh-70px);
+    display: flex;
+    overflow: hidden;
+}
+

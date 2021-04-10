@@ -1,0 +1,34 @@
+.subscriptions-container{
+    background-color: #f9f9f9;
+    width: 100%;
+    height: 100%;
+    padding: 15px 15px;
+    border-top: 1px solid #ddd;
+    overflow-y: hidden;
+     margin-left: 230px;
+     margin-top: 70px;
+}
+
+.subscriptions-list{
+    display: flex;
+    justify-content: space-around;
+}
+
+.subscriptions-list button{
+    font-size: large;
+    padding: 8px;
+    background-color: rgb(226, 62, 62);
+    border: 1px solid red;
+    border-radius: 3px;
+}
+
+.subscriptions-container button{
+    font-size: 1rem;
+}
+
+
+@media (max-width:768px) {
+    .subscriptions-container{
+        margin-left: 0px;
+    }
+}
