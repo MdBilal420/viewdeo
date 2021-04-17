@@ -28,7 +28,7 @@ const modalStyle = {
 
 const VideoDetail = ({ video }) => {
 
-    const { dispatch, playlists } = useVideo()
+    const { dispatch, playlists, likedVideos } = useVideo()
     const [showModal, setShowModal] = useState(false)
     const [text, setText] = useState()
 
@@ -37,20 +37,24 @@ const VideoDetail = ({ video }) => {
         setShowModal(false)
     }
 
+
     const videoSrc = "https://www.youtube.com/embed/"
     return (
         <div className="video-watch-container">
             {video && <div className="video-detail">
                 <iframe className="embed-video" src={videoSrc + video.id} title={video.name} />
+                <h3>{video.name}</h3>
                 <div className="video-info">
-                    <h3>{video.name}</h3>
-
-                    <span onClick={() => dispatch({ type: "ADD_TO_LIKE", payload: video })}><i className="material-icons">thumb_up</i></span>
-                    <button onClick={() => dispatch({ type: "ADD_TO_SUBSCRIBE", payload: video.uploadedBy })}>Subscribe</button>
-                    <span onClick={() => setShowModal(true)}><i className="material-icons">playlist_add</i>Save</span>
-
+                    {
+                        likedVideos.find((vid) => vid.id === video.id) ?
+                            <span onClick={() => dispatch({ type: "ADD_TO_UNLIKE", payload: video })}><i className="material-icons">thumb_down</i></span>
+                            :
+                            <span onClick={() => dispatch({ type: "ADD_TO_LIKE", payload: video })}><i className="material-icons">thumb_up</i></span>
+                    }
+                    <i className="material-icons" onClick={() => setShowModal(true)}>playlist_add</i>
+                    <button className="btn-primary" onClick={() => dispatch({ type: "ADD_TO_SUBSCRIBE", payload: video.uploadedBy })}>Subscribe</button>
                 </div>
-                <p>{video.uploadedBy}</p>
+                <h4>{video.uploadedBy}</h4>
                 <Modal isOpen={showModal} onRequestClose={() => setShowModal(false)} style={modalStyle}>
                     <input type="text" onChange={(e) => setText(e.target.value)} placeholder="create new playlist" className="modal-detail-input" />
                     <button onClick={handleModal} className="modal-detail-button">Add</button>
@@ -58,7 +62,6 @@ const VideoDetail = ({ video }) => {
                         playlists.map((playlist) =>
                             <div key={playlist.id}>
                                 <label style={{ fontSize: "1.5rem" }}>
-                                    {console.log(playlist)}
                                     <input
                                         type="checkbox"
                                         onChange={() => dispatch({ type: "ADD_TO_PLAYLIST", payload: { id: playlist.id, video } })}
@@ -71,7 +74,7 @@ const VideoDetail = ({ video }) => {
                 </Modal>
             </div>
             }
-        </div>
+        </div >
     )
 }
 

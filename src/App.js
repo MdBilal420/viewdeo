@@ -7,8 +7,10 @@ import Header from "./components/Header"
 import SideBar from './components/SideBar';
 import Playlist from "./components/Playlist";
 import LikedVideos from "./components/LikedVideos";
-import History from "./components/History";
+// import History from "./components/History";
 import Subscriptions from "./components/Subscriptions";
+import Login from "./components/Login";
+import PrivateRoute from "./PrivateRoute"
 import "../src/styles/style.css"
 
 
@@ -37,11 +39,13 @@ function App() {
         <SideBar side={side} />
         <Routes>
           <Route path="/" element={<VideoList videos={data} selectVideo={selectVideo} />} />
-          <Route path="/playlists" element={<Playlist selectVideo={selectVideo} />} />
-          <Route path="/likedvideos" element={<LikedVideos />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/subscriptions" element={<Subscriptions />} />
           <Route path="/watch/:id" element={<VideoDetail video={currentVideo} />} />
+          <Route path="/login" element={<Login />} />
+
+          <PrivateRoute path="/playlists" element={<Playlist selectVideo={selectVideo} />} />
+          <PrivateRoute path="/likedvideos" element={<LikedVideos selectVideo={selectVideo} />} />
+          {/* <PrivateRoute path="/history" element={<History />} /> */}
+          <PrivateRoute path="/subscriptions" element={<Subscriptions />} />
         </Routes>
       </div>
 

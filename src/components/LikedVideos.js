@@ -1,23 +1,23 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useVideo } from '../context/video-context'
 import "../styles/likedvideos.css"
-import VideoDetail from './VideoDetail'
+// import VideoDetail from './VideoDetail'
+import VideoItem from './VideoItem'
 
-const LikedVideos = () => {
+const LikedVideos = ({ selectVideo }) => {
 
     const { likedVideos } = useVideo()
-    console.log(likedVideos)
+
     return (
         <div className="likedvideos-container">
             <h2>Liked Videos</h2>
-            {likedVideos.map((video) => {
-                return <div
-                    className="liked-video"
-                    key={video.id}>
-                    <VideoDetail video={video} />
-                </div>
-            }
-            )}
+            <div className="liked-video-list">
+                {likedVideos && likedVideos.map((likedVideo) => (
+                    <Fragment key={likedVideo.id}>
+                        <VideoItem selectVideo={selectVideo} video={likedVideo} />
+                    </Fragment>
+                ))}
+            </div>
         </div>
     )
 }

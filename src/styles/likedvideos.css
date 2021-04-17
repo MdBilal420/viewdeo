@@ -11,7 +11,12 @@
 }
 .liked-video{
     width: 600px;
+}
 
+.liked-video-list{
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap
 }
 
 

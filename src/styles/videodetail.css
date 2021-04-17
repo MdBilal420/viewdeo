@@ -10,9 +10,6 @@
 }
 
 .video-detail{
-    /* padding: 10px;
-    margin-left: 300px;
-    margin-top: 80px; */
     width: 100%;
 }
 
@@ -27,19 +24,14 @@
     width: 80%;
     justify-content: "space-around";
       align-items: center;
+            
 }
 
 .video-info span{
     cursor: pointer;
 }
 
-.video-info button{
-    background-color: silver;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid black;
-    border-radius: 3px;
-}
+
 
 .modal-detail-input{
     border: 1px solid black; 

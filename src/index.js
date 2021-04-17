@@ -4,16 +4,18 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { VideoProvider } from '../src/context/video-context'
+import { AuthProvider } from '../src/context/auth-context'
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <VideoProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </VideoProvider>
-
+    <AuthProvider>
+      <VideoProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </VideoProvider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

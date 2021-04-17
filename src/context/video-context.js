@@ -8,40 +8,11 @@ export const useVideo = () => useContext(VideoContext)
 
 const likedVideos = []
 const subscriptions = []
-// const playlists = []
-
 const playlists = [
     {
-        id: "122334",
-        name: "songs",
-        list: [
-            {
-                id: "hdI2bqOjy3c",
-                name:
-                    "JavaScript Crash Course For Beginners",
-                uploadedBy: " Traversy Media",
-                thumbnail: "https://i.ytimg.com/vi_webp/hdI2bqOjy3c/mqdefault.webp",
-                avatarSrc:
-                    "https://yt3.ggpht.com/ytc/AAUvwng963DN2_MIbKuvMWRrN4KG920h3Y4YHg6KET9vZg=s48-c-k-c0x00ffffff-no-rj",
-            },
-
-        ]
-    },
-    {
-        id: "45267",
-        name: "cooking",
-        list: [
-            {
-                id: "XBj_le81sAc",
-                name:
-                    "Introduction To PHP | Procedural PHP Tutorial For Beginners | PHP Tutorial | mmtuts",
-                uploadedBy: " Dani Krossing",
-                thumbnail: "https://i.ytimg.com/vi/XBj_le81sAc/mqdefault.jpg",
-                avatarSrc:
-                    "https://yt3.ggpht.com/ytc/AAUvwnhnGW-L982DVkS9_1rpwPYq_X8xZ-_lMbs2hUE8pw=s48-c-k-c0x00ffffff-no-rj"
-            },
-
-        ]
+        id: Math.random() * 1000,
+        name: "Watch Later",
+        list: []
     },
 ]
 
@@ -62,8 +33,6 @@ export const VideoProvider = ({ children }) => {
 }
 
 const reducer = (state, action) => {
-    // console.log(state, action)
-    console.log(state.playlists)
     switch (action.type) {
         case "ADD_TO_LIKE":
             const present = state.likedVideos.find((item) => item.id === action.payload.id)
@@ -74,6 +43,11 @@ const reducer = (state, action) => {
                 }
             }
             return { ...state, likedVideos }
+        case "ADD_TO_UNLIKE":
+            return {
+                ...state,
+                likedVideos: state.likedVideos.filter((video) => video.id !== action.payload.id)
+            }
         case "ADD_TO_SUBSCRIBE":
             return {
                 ...state,
@@ -85,27 +59,22 @@ const reducer = (state, action) => {
                 subscriptions: state.subscriptions.filter((sub) => sub !== action.payload)
             }
         case "CREATE_PLAYLIST":
+            console.log(action.payload)
             return {
                 ...state,
-                playlists: state.playlists.concat(action.payload)
+                playlists: state.playlists.concat({ id: action.payload.id, name: action.payload.name, list: [action.payload.video] })
             }
         case "ADD_TO_PLAYLIST":
-            console.log(action.payload)
-            const found = playlists.find((playlist) => playlist.list.id === action.payload.id)
-            console.log(found)
-            if (!found) {
-                return {
-                    ...state,
-                    playlists: state.playlists.map(({ id, name, list }) =>
-                        id === action.payload.id
-                            ?
-                            { id, name, list: list.concat(action.payload.video) }
-                            :
-                            { id, name, list }
-                    )
-                }
+            return {
+                ...state,
+                playlists: state.playlists.map(({ id, name, list }) =>
+                    id === action.payload.id
+                        ?
+                        { id, name, list: list.concat(action.payload.video) }
+                        :
+                        { id, name, list }
+                )
             }
-            return state
         default:
             return state
     }

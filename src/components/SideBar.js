@@ -26,9 +26,9 @@ const SideBar = ({ side }) => {
                 <Link to="playlists" className="category">
                     <i className="material-icons">playlist_add_check</i><span>Playlists</span>
                 </Link>
-                <Link to="history" className="category">
+                {/* <Link to="history" className="category">
                     <i className="material-icons">history</i><span>History</span>
-                </Link>
+                </Link> */}
                 <Link to="likedvideos" className="category">
                     <i className="material-icons">thumb_up</i><span>Liked Videos</span>
                 </Link>
