@@ -11,7 +11,7 @@
 .main-container{
     height: calc(100vh-70px);
     display: flex;
-    overflow: hidden;
+    overflow-y: auto;;
 }
 
 .material-icons{
