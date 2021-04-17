@@ -11,8 +11,14 @@
 .main-container{
     height: 100vh;
     display: flex;
-    overflow-y: auto;;
+    overflow-y: auto;
 }
+
+.main-container::-webkit-scrollbar{
+    display: none;
+}
+
+
 
 .material-icons{
     font-size: 2rem;

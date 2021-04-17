@@ -51,8 +51,9 @@ const VideoDetail = ({ video }) => {
                             :
                             <span onClick={() => dispatch({ type: "ADD_TO_LIKE", payload: video })}><i className="material-icons">thumb_up</i></span>
                     }
-                    <i className="material-icons" onClick={() => setShowModal(true)}>playlist_add</i>
-                    <button className="btn-primary" onClick={() => dispatch({ type: "ADD_TO_SUBSCRIBE", payload: video.uploadedBy })}>Subscribe</button>
+                    <i className="material-icons" style={{ cursor: "pointer" }} onClick={() => setShowModal(true)}>playlist_add</i>
+                    <button className="btn-primary" onClick={() => dispatch({ type: "ADD_TO_SUBSCRIBE", payload: video })}>Subscribe</button>
+
                 </div>
                 <h4>{video.uploadedBy}</h4>
                 <Modal isOpen={showModal} onRequestClose={() => setShowModal(false)} style={modalStyle}>
