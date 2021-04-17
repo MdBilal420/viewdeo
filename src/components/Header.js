@@ -15,7 +15,7 @@ const Header = ({ onSearch, toggle }) => {
             <div className="header-left" >
                 <i className="material-icons" onClick={() => toggle()}>menu</i>
                 <Link to="/" style={{ textDecoration: "none", color: "rgb(66,66,66)" }}>
-                    <label style={{ cursor: 'pointer' }}>Viewdeo</label>
+                    <label style={{ cursor: 'pointer', fontWeight: "bolder", color: "black", fontSize: "1.5rem" }}>Viewdeo</label>
                 </Link>
             </div>
             {/* <SearchBar onSearch={onSearch} /> */}

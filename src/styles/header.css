@@ -52,6 +52,11 @@
     border-radius: 0;
 }
 
+.header-icons{
+    display: flex;
+    align-items: center;
+}
+
 @media (max-width:425px) {
     .search-bar{
         display: none
@@ -66,7 +71,5 @@
 @media (max-width:768px){
     .search-bar{
         display: none;
-    }
-
-    
+    }    
 }
