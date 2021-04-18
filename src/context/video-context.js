@@ -49,10 +49,15 @@ const reducer = (state, action) => {
                 likedVideos: state.likedVideos.filter((video) => video.id !== action.payload.id)
             }
         case "ADD_TO_SUBSCRIBE":
-            return {
-                ...state,
-                subscriptions: state.subscriptions.concat(action.payload)
+            const found = state.subscriptions.find((item) => item.id === action.payload.id)
+            if (!found) {
+                return {
+                    ...state,
+                    subscriptions: state.subscriptions.concat(action.payload)
+                }
             }
+            return { ...state, subscriptions }
+
         case "REMOVE_SUBSCRIPTION":
             return {
                 ...state,
