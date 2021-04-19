@@ -4,22 +4,32 @@
     height: 100%;
     padding: 15px 15px;
     border-top: 1px solid #ddd;
-    overflow-y: hidden;
+    overflow-y: scroll;
      margin-left: 230px;
      margin-top: 70px;
     margin-bottom: 20px;
 }
 
+.playlists-title{
+    display: flex; 
+    align-items: center;
+}
+
+.material-icons{
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
 .playlist-list{
     display: flex; 
     flex-direction: row;
-     flex-wrap: wrap
+    flex-wrap: wrap
 }
 
 .playlist-container h2{
     margin-top: 10px;
     margin-bottom: 20px;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 

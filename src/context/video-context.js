@@ -64,7 +64,6 @@ const reducer = (state, action) => {
                 subscriptions: state.subscriptions.filter((sub) => sub !== action.payload)
             }
         case "CREATE_PLAYLIST":
-            console.log(action.payload)
             return {
                 ...state,
                 playlists: state.playlists.concat({ id: action.payload.id, name: action.payload.name, list: [action.payload.video] })
@@ -80,6 +79,26 @@ const reducer = (state, action) => {
                         { id, name, list }
                 )
             }
+
+        case "REMOVE_PLAYLIST":
+            return {
+                ...state,
+                playlists: state.playlists.filter((playlist) => playlist.id !== action.payload.id)
+            }
+
+        case "REMOVE_VIDEO_FROM_PLAYLIST":
+            console.log(state.playlists)
+            console.log(action.payload)
+            return {
+                ...state,
+                playlists: state.playlists.map((playlist) => playlist.id === action.payload.playlist.id
+                    ?
+                    { ...playlist, list: playlist.list.filter((play) => play.id !== action.payload.video.id) }
+                    :
+                    playlist
+                )
+            }
+
         default:
             return state
     }
