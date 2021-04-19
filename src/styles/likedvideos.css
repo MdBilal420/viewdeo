@@ -16,9 +16,13 @@
 .liked-video-list{
     display: flex; 
     flex-direction: row;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    margin: 20px;
 }
 
+.liked-video-list h1 {
+    color: gray;
+}
 
 @media (max-width:768px){
     .likedvideos-container{
