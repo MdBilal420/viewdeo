@@ -1,5 +1,5 @@
 ## Viewdeo
-A video library App. 🏎
+A video library App.
 
 Live link: https://viewdeo.netlify.app/
   
@@ -8,7 +8,7 @@ Live link: https://viewdeo.netlify.app/
 
 ### Tech Stack   
 - ReactJS, React Router v6
-- React Conrext API
+- React Context API
 - [Messy CSS Library](https://messyui.netlify.app/)
 
 ### Features 
