@@ -19,4 +19,4 @@ Live link: https://viewdeo.netlify.app/
 
 ---
 ### Home page screenshot
-![image](https://user-images.githubusercontent.com/29103125/127404230-2123bd97-ef0c-4f09-ae6f-b09872c60974.png)
+![Screenshot (65)](https://user-images.githubusercontent.com/29103125/127404341-d5524623-69ee-4fcf-9219-63ef73d94a66.png)
