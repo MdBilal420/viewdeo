@@ -2,7 +2,7 @@
 const Users = [
     {
         username: "admin",
-        password: "admin"
+        password: "123456"
     },
 
 ]

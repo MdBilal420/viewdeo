@@ -6,8 +6,8 @@ import "../styles/login.css"
 const Login = () => {
 
     const { login, checkLogin } = useAuth()
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("admin");
+    const [password, setPassword] = useState("123456");
     const { state } = useLocation()
     const navigate = useNavigate()
 
@@ -23,13 +23,14 @@ const Login = () => {
                 <form className="login-container" onSubmit={() => handleClick(username, password)}>
                     <label>Username:</label>
                     <input
-
+                        value={username}
                         type="text"
                         placeholder="Username"
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <label>Password:</label>
                     <input
+                        value={password}
                         type="text"
                         placeholder="Password"
                         onChange={(e) => setPassword(e.target.value)}
