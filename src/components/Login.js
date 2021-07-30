@@ -14,7 +14,7 @@ const Login = () => {
 
     const handleClick = (username, password) => {
         checkLogin(username, password)
-        navigate(state?.from ? state.from : "/")
+        navigate("/")
     }
 
     return (
