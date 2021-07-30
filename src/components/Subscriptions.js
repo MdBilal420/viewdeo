@@ -8,8 +8,8 @@ const Subscriptions = () => {
     return (
         <div className="subscriptions-container">
             <h1>Subscriptions</h1>
-            {subscriptions.map((sub) => <div className="subscriptions-list">
-                <h3>{sub}</h3>
+            {subscriptions.length === 0 ? <h1 style={{ color: "gray" }}>0 Channels Subscribed</h1> : subscriptions.map((sub) => <div className="subscriptions-list" key={sub}>
+                {<h3>{sub.uploadedBy}</h3>}
                 <button onClick={() => dispatch({ type: "REMOVE_SUBSCRIPTION", payload: sub })}>Unsubscribe</button>
             </div>
             )}

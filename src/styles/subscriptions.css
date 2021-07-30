@@ -9,6 +9,10 @@
     margin-top: 70px;
 }
 
+/* .subscriptions-container h1{
+    color: gray;
+} */
+
 .subscriptions-list{
     display: flex;
     justify-content: space-between;

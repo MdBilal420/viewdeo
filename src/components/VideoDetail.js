@@ -3,6 +3,7 @@ import { useVideo } from '../context/video-context'
 import Modal from "react-modal"
 import "../styles/style.css"
 import "../styles/videodetail.css"
+import VideoAction from './VideoAction'
 
 
 Modal.setAppElement("#root")
@@ -28,7 +29,7 @@ const modalStyle = {
 
 const VideoDetail = ({ video }) => {
 
-    const { dispatch, playlists, likedVideos } = useVideo()
+    const { dispatch, playlists } = useVideo()
     const [showModal, setShowModal] = useState(false)
     const [text, setText] = useState()
 
@@ -45,16 +46,9 @@ const VideoDetail = ({ video }) => {
                 <iframe className="embed-video" src={videoSrc + video.id} title={video.name} />
                 <h3>{video.name}</h3>
                 <div className="video-info">
-                    {
-                        likedVideos.find((vid) => vid.id === video.id) ?
-                            <span onClick={() => dispatch({ type: "ADD_TO_UNLIKE", payload: video })}><i className="material-icons">thumb_down</i></span>
-                            :
-                            <span onClick={() => dispatch({ type: "ADD_TO_LIKE", payload: video })}><i className="material-icons">thumb_up</i></span>
-                    }
-                    <i className="material-icons" onClick={() => setShowModal(true)}>playlist_add</i>
-                    <button className="btn-primary" onClick={() => dispatch({ type: "ADD_TO_SUBSCRIBE", payload: video.uploadedBy })}>Subscribe</button>
+                    <VideoAction video={video} setShowModal={setShowModal} />
+                    <h2>{video.uploadedBy}</h2>
                 </div>
-                <h4>{video.uploadedBy}</h4>
                 <Modal isOpen={showModal} onRequestClose={() => setShowModal(false)} style={modalStyle}>
                     <input type="text" onChange={(e) => setText(e.target.value)} placeholder="create new playlist" className="modal-detail-input" />
                     <button onClick={handleModal} className="modal-detail-button">Add</button>
